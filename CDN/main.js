@@ -10,11 +10,11 @@ const app = Vue.createApp({
     methods: {
         handleEvents: function (event) {
             this.eventType = event.type;
-            console.log(event);
+            console.log(event.offsetX + ' ' + event.offsetY);
             
             if (event.type === 'mousemove') {
-                this.x = event.offsetx;
-                this.y = event.offsety;               
+                this.x = event.offsetX;
+                this.y = event.offsetY;               
             }
         }
     },
