@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Vue JS</title>
 
-    <style>
-        .box{
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #eee;
-            width: 23.25%;
-            height: 250px;
-            display: inline-block;
-            margin: 0 10px;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <div id="app">
-        <div class="box" @click="handleEvents">
-            <p>{{ eventType }}</p>
-        </div>
-        <div class="box" @mouseover="handleEvents" @mouseleave="handleEvents">
-            <p>{{ eventType }}</p>
-        </div>
-        <div class="box" @mousemove="handleEvents">
-            <p>{{ eventType }}</p>
-        </div>
-        <div class="box" @dblclick="handleEvents">
-            <p>{{ eventType }}</p>
-        </div>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learning Vue JS</title>
 
-    <script src="vue.global.js"></script>
-    <script src="main.js"></script>
-</body>
+        <style>
+            .box {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background-color: #eee;
+                width: 25%;
+                height: 250px;
+                display: inline-block;
+                margin: 0 10px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="box" @click="handleEvents" @dblclick="handleEvents" @mouseover="handleEvents"
+                @mouseleave="handleEvents" @mousemove="handleEvents">
+                <p>{{ eventType }}</p>
+            </div>
+        </div>
+
+        <script src="vue.global.js"></script>
+        <script src="main.js"></script>
+    </body>
+
 </html>
