@@ -3,8 +3,7 @@ const app = Vue.createApp({
         return {
             eventType: '',
             x: 0,
-            y: 0,
-            position: 'x: ' + this.x + 'px, y:' + this.y + 'px'
+            y: 0
         }
     },
     methods: {
