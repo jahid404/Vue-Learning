@@ -5,6 +5,7 @@ const app = Vue.createApp({
     methods: {
         handleEvents: function (event) {
             console.log(event);
+            eventType: event.type
         }
     },
 })
