@@ -26,6 +26,7 @@
                 @mouseleave="handleEvents" @mousemove="handleEvents">
                 <p>{{ eventType }}</p>
                 <p v-if="eventType == 'mousemove'">x: {{ x }}px, y: {{ y }}px</p>
+                <p v-if="eventType == 'mousemove'">position: {{ position}}</p>
             </div>
         </div>
 
