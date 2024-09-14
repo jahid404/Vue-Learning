@@ -25,7 +25,7 @@
             <div class="box" @click="handleEvents" @dblclick="handleEvents" @mouseover="handleEvents"
                 @mouseleave="handleEvents" @mousemove="handleEvents">
                 <p>{{ eventType }}</p>
-                <p v-if="eventType == 'mousemove'">{{ position }}</p>
+                <p v-if="eventType == 'mousemove'">x: {{ x }}px, y: {{ y }}px</p>
             </div>
         </div>
 
