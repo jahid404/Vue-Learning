@@ -1,11 +1,12 @@
 const app = Vue.createApp({
     data() {
-        return {}
+        return {
+            eventType: this.handleEvents.type
+        }
     },
     methods: {
         handleEvents: function (event) {
-            console.log(event);
-            eventType: event.type
+            
         }
     },
 })

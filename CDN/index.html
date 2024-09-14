@@ -20,16 +20,16 @@
 </head>
 <body>
     <div id="app">
-        <div class="box" v-on:click="handleEvents">
+        <div class="box" @click="handleEvents">
             <p>{{ eventType }}</p>
         </div>
-        <div class="box" v-on:mouseover="handleEvents">
+        <div class="box" @mouseover="handleEvents" @mouseleave="handleEvents">
             <p>{{ eventType }}</p>
         </div>
-        <div class="box" v-on:mousemove="handleEvents">
+        <div class="box" @mousemove="handleEvents">
             <p>{{ eventType }}</p>
         </div>
-        <div class="box" v-on:dblclick="handleEvents">
+        <div class="box" @dblclick="handleEvents">
             <p>{{ eventType }}</p>
         </div>
     </div>
