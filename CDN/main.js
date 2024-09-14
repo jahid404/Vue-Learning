@@ -4,7 +4,6 @@ const app = Vue.createApp({
             eventType: '',
             x: 0,
             y: 0,
-            position: 'x: ' + this.x + 'px, y:' + this.y + 'px'
         }
     },
     methods: {
@@ -17,6 +16,11 @@ const app = Vue.createApp({
             }
         }
     },
+    computed: {
+        position() {
+            return `x: ${this.x}px, y: ${this.y}px`;
+        }
+    }
 })
 
 app.mount('#app');
