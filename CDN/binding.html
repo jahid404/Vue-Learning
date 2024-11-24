@@ -11,7 +11,7 @@
     <body>
         <div id="app">
             <h3>{{ tutorialInfo.name }}</h3>
-            <a href="{{ tutorialInfo.url }}">Click Me</a>
+            <a v-bind:href="tutorialInfo.url">Click Me</a>
         </div>
 
         <script src="js/vue.global.js"></script>
