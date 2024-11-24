@@ -11,7 +11,8 @@
     <body>
         <div id="app">
             <h3>{{ tutorialInfo.name }}</h3>
-            <a v-bind:href="tutorialInfo.url">Click Me</a>
+            <a :href="tutorialInfo.url">Click Me</a>
+            <p>{{ tutorialInfo.html }}</p>
         </div>
 
         <script src="js/vue.global.js"></script>
@@ -22,7 +23,8 @@
                     return {
                         tutorialInfo: {
                             name: 'Vue JS 3',
-                            url: 'https://dreamersdesire.com'
+                            url: 'https://dreamersdesire.com',
+                            html: '<b>Test</b>'
                         }
                     };
                 },
