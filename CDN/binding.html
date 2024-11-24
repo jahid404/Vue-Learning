@@ -10,7 +10,8 @@
 
     <body>
         <div id="app">
-            {{ msg }}
+            <h3>{{ tutorialInfo.name }}</h3>
+            <a href="{{ tutorialInfo.url }}">Click Me</a>
         </div>
 
         <script src="js/vue.global.js"></script>
@@ -19,7 +20,10 @@
             const app = Vue.createApp({
                 data() {
                     return {
-                        msg: 'welcome to vue js 3'
+                        tutorialInfo: {
+                            name: 'Vue JS 3',
+                            url: 'javascript:void(0)'
+                        }
                     };
                 },
             });
