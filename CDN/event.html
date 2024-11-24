@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learning Vue JS</title>
+
+        <style>
+            .box {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background-color: #eee;
+                width: 25%;
+                height: 250px;
+                display: inline-block;
+                margin: 0 10px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="box" @click="handleEvents" @dblclick="handleEvents" @mouseover="handleEvents"
+                @mouseleave="handleEvents" @mousemove="handleEvents">
+                <p>{{ eventType }}</p>
+                <p v-if="eventType == 'mousemove'">x: {{ x }}px, y: {{ y }}px</p>
+                <p v-if="eventType == 'mousemove'">position: {{ position}}</p>
+            </div>
+        </div>
+
+        <script src="vue.global.js"></script>
+        
+        <script>
+            const app = Vue.createApp({
+                    data() {
+                        return {
+                            eventType: '',
+                            x: 0,
+                            y: 0,
+                        }
+                    },
+                    methods: {
+                        handleEvents: function (event) {
+                            this.eventType = event.type;
+
+                            if (event.type === 'mousemove') {
+                                this.x = event.offsetX;
+                                this.y = event.offsetY;
+                            }
+                        }
+                    },
+                    computed: {
+                        position() {
+                            return `x: ${this.x}px, y: ${this.y}px`;
+                        }
+                    }
+                })
+
+                app.mount('#app');
+        </script>
+    </body>
+
+</html>
