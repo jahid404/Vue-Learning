@@ -12,7 +12,7 @@
         <div id="app">
             <h3>{{ tutorialInfo.name }}</h3>
             <a :href="tutorialInfo.url">Click Me</a>
-            <p>{{ tutorialInfo.html }}</p>
+            <p v-html="tutorialInfo.html"></p>
         </div>
 
         <script src="js/vue.global.js"></script>
