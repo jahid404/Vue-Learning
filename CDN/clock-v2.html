@@ -19,7 +19,7 @@
                 background: radial-gradient(circle, #1f1f1f 90%, #000000 100%);
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             }
-        
+
             .clock .hand {
                 position: absolute;
                 top: 50%;
@@ -28,27 +28,27 @@
                 transform: translate(-50%, -50%);
                 transition: transform 0.1s linear;
             }
-        
+
             .clock .hour-hand {
                 width: 30%;
                 height: 4px;
                 background-color: #acacac;
                 border-radius: 2px;
             }
-        
+
             .clock .minute-hand {
                 width: 40%;
                 height: 3px;
                 background-color: #777777;
                 border-radius: 2px;
             }
-        
+
             .clock .second-hand {
                 width: 45%;
                 height: 2px;
                 background-color: red;
             }
-        
+
             .clock .center {
                 width: 12px;
                 height: 12px;
@@ -59,7 +59,7 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
-        
+
             .clock .ticks {
                 position: absolute;
                 width: 4px;
@@ -69,10 +69,26 @@
                 top: 0;
                 transform-origin: center 120px;
             }
-        
+
             .clock .ticks:nth-child(odd) {
                 height: 8px;
                 background-color: #777;
+            }
+
+            .clock .hour-labels {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+
+            .clock .hour-labels .label {
+                position: absolute;
+                color: #d4d4d4;
+                font-size: 18px;
+                font-weight: bold;
+                transform: translate(-50%, -50%);
             }
         </style>
     </head>
@@ -81,13 +97,18 @@
         <div id="app" class="container py-5 text-center">
             <h1 class="mb-4">Analog Clock</h1>
             <div class="clock">
-                <div class="hand hour-hand" :style="{ transform: `rotate(${hourDegrees}deg)` }">
-                </div>
-                <div class="hand minute-hand" :style="{ transform: `rotate(${minuteDegrees}deg)` }">
-                </div>
-                <div class="hand second-hand" :style="{ transform: `rotate(${secondDegrees}deg)` }">
-                </div>
+                <div class="hand hour-hand" :style="{ transform: `rotate(${hourDegrees}deg)` }"></div>
+                <div class="hand minute-hand" :style="{ transform: `rotate(${minuteDegrees}deg)` }"></div>
+                <div class="hand second-hand" :style="{ transform: `rotate(${secondDegrees}deg)` }"></div>
                 <div class="center"></div>
+
+                <!-- Hour Labels (12, 3, 6, 9) -->
+                <div class="hour-labels">
+                    <div class="label" style="top: 10%; left: 50%;">12</div>
+                    <div class="label" style="top: 50%; left: 90%;">3</div>
+                    <div class="label" style="top: 90%; left: 50%;">6</div>
+                    <div class="label" style="top: 50%; left: 10%;">9</div>
+                </div>
             </div>
         </div>
 
