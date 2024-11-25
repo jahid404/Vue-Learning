@@ -34,7 +34,7 @@
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
-            import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-messaging.js";
+            import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-messaging.js";
 
             const firebaseConfig = {
                 apiKey: "AIzaSyD2ZQkb4iTHH3Li45lbFPafAygfC8dAY1Q",
@@ -50,41 +50,6 @@
             const analytics = getAnalytics(notificationApp);
             const messaging = getMessaging(notificationApp);
 
-            // Request notification permission and get the token
-            async function requestNotificationPermission() {
-                try {
-                    const permission = await Notification.requestPermission();
-                    if (permission === 'granted') {
-                        console.log('Notifications enabled!');
-                        getToken(messaging, { vapidKey: "BKNg12mdWAKzbzJXU7TfzCE7k_lHc1xTLbMQVFrolreYJOjJXkEwcIuFl-jHf4WR09MgLkxiJgVAcNovrWTKm88" }).then((currentToken) => {
-                            if (currentToken) {
-                                console.log("FCM Token:", currentToken);
-                                // Send token to your server if needed
-                            } else {
-                                console.log('No Instance ID token available.');
-                            }
-                        }).catch((err) => {
-                            console.error('Error retrieving token: ', err);
-                        });
-                    } else {
-                        console.log('Permission denied.');
-                    }
-                } catch (error) {
-                    console.log('Error requesting notification permission.');
-                }
-            }
-
-            // Send a demo notification to the device
-            function sendDemoNotification() {
-                if ('Notification' in window) {
-                    // Create a new notification
-                    new Notification('Demo Notification', {
-                        body: 'This is a demo push notification sent via Firebase!',
-                        icon: 'https://via.placeholder.com/128'
-                    });
-                }
-            }
-
             const app = Vue.createApp({
                 data() {
                     return {
@@ -92,8 +57,41 @@
                     };
                 },
                 methods: {
+                    // Request notification permission and get the token
+                    async requestNotificationPermission() {
+                        try {
+                            const permission = await Notification.requestPermission();
+                            if (permission === 'granted') {
+                                console.log('Notifications enabled!');
+                                const currentToken = await getToken(messaging, { vapidKey: "BKNg12mdWAKzbzJXU7TfzCE7k_lHc1xTLbMQVFrolreYJOjJXkEwcIuFl-jHf4WR09MgLkxiJgVAcNovrWTKm88" });
+                                if (currentToken) {
+                                    console.log("FCM Token:", currentToken);
+                                    // Send token to your server if needed
+                                } else {
+                                    console.log('No Instance ID token available.');
+                                }
+                            } else {
+                                console.log('Permission denied.');
+                            }
+                        } catch (error) {
+                            console.log('Error requesting notification permission:', error);
+                        }
+                    },
+
+                    // Send a demo notification to the device
+                    sendDemoNotification() {
+                        if ('Notification' in window) {
+                            // Create a new notification
+                            new Notification('Demo Notification', {
+                                body: 'This is a demo push notification sent via Firebase!',
+                                icon: 'https://via.placeholder.com/128'
+                            });
+                        }
+                    },
+
+                    // Method to trigger the demo notification
                     sendNotification() {
-                        sendDemoNotification();
+                        this.sendDemoNotification();
                         this.message = 'Demo notification sent!';
                     }
                 },
