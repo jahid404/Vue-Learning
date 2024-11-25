@@ -89,7 +89,7 @@
                         this.messaging = firebase.messaging();
 
                         // Get Firebase Cloud Messaging Token
-                        this.messaging.getToken({ vapidKey: "YOUR_VAPID_KEY" }).then((currentToken) => {
+                        this.messaging.getToken({ vapidKey: "BKNg12mdWAKzbzJXU7TfzCE7k_lHc1xTLbMQVFrolreYJOjJXkEwcIuFl-jHf4WR09MgLkxiJgVAcNovrWTKm88" }).then((currentToken) => {
                             if (currentToken) {
                                 console.log("FCM Token:", currentToken);
                                 // Send this token to your server for notification management
