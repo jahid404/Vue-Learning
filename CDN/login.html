@@ -7,50 +7,85 @@
         <title>Learning Vue JS</title>
         <link rel="stylesheet" href="css/bootstrap-v5.min.css">
         <script src="js/vue.global.js"></script>
+
+        <style>
+            .container {
+                max-width: 400px;
+                margin-top: 50px;
+            }
+
+            .error {
+                color: red;
+                font-size: 0.9em;
+            }
+        </style>
     </head>
 
-    <body>
-        <div id="app" class="container py-5 text-center">
-            <div class="card mx-auto" style="max-width: 500px;">
-                <div class="card-header bg-primary text-white">
-                    <h3>Count: {{ count }}</h3>
+    <body class="bg-light">
+        <div id="app" class="container">
+            <h2 class="text-center mb-4">Login</h2>
+    
+            <form @submit.prevent="submitForm">
+                <!-- Username Field -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" v-model="username" class="form-control"
+                        :class="{'is-invalid': errors.username}">
+                    <div v-if="errors.username" class="error">{{ errors.username }}</div>
                 </div>
-                <div class="card-body">
-                    <button @click="increment" class="btn btn-success me-2">
-                        Increment +
-                    </button>
-                    <button v-on:click="decrement" class="btn btn-warning me-2">
-                        Decrement -
-                    </button>
-                    <button v-on:click="reset" class="btn btn-danger">
-                        Reset
-                    </button>
+    
+                <!-- Password Field -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" v-model="password" class="form-control"
+                        :class="{'is-invalid': errors.password}">
+                    <div v-if="errors.password" class="error">{{ errors.password }}</div>
                 </div>
+    
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+    
+            <!-- Success Message -->
+            <div v-if="successMessage" class="alert alert-success mt-3" role="alert">
+                {{ successMessage }}
             </div>
         </div>
-
+    
         <script>
             const app = Vue.createApp({
                 data() {
                     return {
-                        count: 0
+                        username: '',
+                        password: '',
+                        errors: {},
+                        successMessage: ''
                     };
                 },
                 methods: {
-                    increment() {
-                        this.count++;
-                    },
+                    validateForm() {
+                        this.errors = {};
 
-                    decrement() {
-                        if (this.count > 0) {
-                            this.count--;
+                        if (!this.username) {
+                            this.errors.username = 'Username is required.';
                         }
-                    },
 
-                    reset() {
-                        this.count = 0;
+                        if (!this.password) {
+                            this.errors.password = 'Password is required.';
+                        }
+
+                        return Object.keys(this.errors).length === 0;
+                    },
+                    submitForm() {
+                        if (this.validateForm()) {
+                            this.successMessage = 'Login successful!';
+                            this.errors = {}; // Clear any previous errors
+                            // Here you could also handle form submission (e.g., via an API request)
+                        } else {
+                            this.successMessage = ''; // Clear success message
+                        }
                     }
-                },
+                }
             });
 
             app.mount('#app');
