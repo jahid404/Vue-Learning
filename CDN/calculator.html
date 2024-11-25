@@ -32,9 +32,7 @@
 
         <script src="js/vue.global.js"></script>
         <script>
-            const { createApp } = Vue;
-
-            createApp({
+            const app = Vue.createApp({
                 data() {
                     return {
                         display: '',
@@ -63,7 +61,9 @@
                         }
                     },
                 },
-            }).mount('#app');
+            });
+
+            app.mount('#app');
         </script>
     </body>
 
