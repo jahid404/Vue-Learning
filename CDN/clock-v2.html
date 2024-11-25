@@ -109,6 +109,9 @@
                     <div class="label" style="top: 95%; left: 50%;">6</div>
                     <div class="label" style="top: 50%; left: 5%;">9</div>
                 </div>
+
+                <!-- Minute Ticks (5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55) -->
+                <div class="ticks" v-for="tick in 60" :style="{ transform: `rotate(${tick * 6}deg)` }"></div>
             </div>
         </div>
 
