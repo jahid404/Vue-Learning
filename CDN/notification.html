@@ -62,60 +62,64 @@
             const analytics = getAnalytics(notificationApp);
             const messaging = getMessaging(notificationApp);
 
-            const app = Vue.createApp({
-                data() {
-                    return {
-                        title: '',
-                        messageContent: '',
-                        statusMessage: ''
-                    };
-                },
-                methods: {
-                    async requestNotificationPermission() {
-                        try {
-                            const permission = await Notification.requestPermission();
-                            if (permission === 'granted') {
-                                console.log('Notifications enabled!');
-                                const currentToken = await getToken(messaging, { vapidKey: "BKNg12mdWAKzbzJXU7TfzCE7k_lHc1xTLbMQVFrolreYJOjJXkEwcIuFl-jHf4WR09MgLkxiJgVAcNovrWTKm88" });
-                                if (currentToken) {
-                                    console.log("FCM Token:", currentToken);
+            if ('serviceWorker' in navigator && 'Notification' in window) {
+                const app = Vue.createApp({
+                    data() {
+                        return {
+                            title: '',
+                            messageContent: '',
+                            statusMessage: ''
+                        };
+                    },
+                    methods: {
+                        async requestNotificationPermission() {
+                            try {
+                                const permission = await Notification.requestPermission();
+                                if (permission === 'granted') {
+                                    console.log('Notifications enabled!');
+                                    const currentToken = await getToken(messaging, { vapidKey: "BKNg12mdWAKzbzJXU7TfzCE7k_lHc1xTLbMQVFrolreYJOjJXkEwcIuFl-jHf4WR09MgLkxiJgVAcNovrWTKm88" });
+                                    if (currentToken) {
+                                        console.log("FCM Token:", currentToken);
+                                    } else {
+                                        console.log('No Instance ID token available.');
+                                    }
                                 } else {
-                                    console.log('No Instance ID token available.');
+                                    console.log('Permission denied.');
                                 }
-                            } else {
-                                console.log('Permission denied.');
+                            } catch (error) {
+                                console.log('Error requesting notification permission:', error);
                             }
-                        } catch (error) {
-                            console.log('Error requesting notification permission:', error);
+                        },
+
+                        sendDemoNotification() {
+                            if ('Notification' in window) {
+                                const notificationTitle = this.title || 'Default Title';
+                                const notificationMessage = this.messageContent;
+                                const notificationIcon = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_WtXkLnA3EK1XGF0QCh3k-PBDybu1gwa4dHI453TfyJ5cXmnjNfAeT0hLFFBac7AqTeziqTv4dQXqMzRZGQH4LBbgUVL80_GagAbz4mZi1_w5-MOUaMtoyzLQPRT_k2Mcz4SCZ1h2oRnzHBZBf83wbYtS3BE4bTIA1sNtEPmd9kxssJlNACV9ejqCXbA';
+
+                                new Notification(notificationTitle, {
+                                    body: notificationMessage,
+                                    icon: notificationIcon
+                                });
+                            }
+                        },
+
+                        sendNotification() {
+                            this.sendDemoNotification();
+                            this.message = 'Demo notification sent!';
                         }
                     },
-
-                    sendDemoNotification() {
+                    mounted() {
                         if ('Notification' in window) {
-                            const notificationTitle = this.title || 'Default Title';
-                            const notificationMessage = this.messageContent;
-                            const notificationIcon = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_WtXkLnA3EK1XGF0QCh3k-PBDybu1gwa4dHI453TfyJ5cXmnjNfAeT0hLFFBac7AqTeziqTv4dQXqMzRZGQH4LBbgUVL80_GagAbz4mZi1_w5-MOUaMtoyzLQPRT_k2Mcz4SCZ1h2oRnzHBZBf83wbYtS3BE4bTIA1sNtEPmd9kxssJlNACV9ejqCXbA';
-
-                            new Notification(notificationTitle, {
-                                body: notificationMessage,
-                                icon: notificationIcon
-                            });
+                            this.requestNotificationPermission();
                         }
-                    },
-
-                    sendNotification() {
-                        this.sendDemoNotification();
-                        this.message = 'Demo notification sent!';
                     }
-                },
-                mounted() {
-                    if ('Notification' in window) {
-                        this.requestNotificationPermission();
-                    }
-                }
-            });
+                });
 
-            app.mount('#app');
+                app.mount('#app');
+            } else {
+                alert('This browser does not support the required features for notifications.');
+            }
         </script>
     </body>
 
