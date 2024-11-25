@@ -99,30 +99,27 @@
                     };
                 },
                 computed: {
-                    // Calculate the degrees for the hour, minute, and second hands
                     hourDegrees() {
                         const hours = this.time.getHours() % 12;
                         const minutes = this.time.getMinutes();
-                        return (hours * 30) + (minutes / 2); // 30 degrees per hour
+                        return (hours * 30) + (minutes / 2);
                     },
                     minuteDegrees() {
                         const minutes = this.time.getMinutes();
                         const seconds = this.time.getSeconds();
-                        return (minutes * 6) + (seconds / 10); // 6 degrees per minute
+                        return (minutes * 6) + (seconds / 10);
                     },
                     secondDegrees() {
                         const seconds = this.time.getSeconds();
-                        return seconds * 6; // 6 degrees per second
+                        return seconds * 6;
                     },
                 },
                 mounted() {
-                    // Update the time every second
                     this.timer = setInterval(() => {
                         this.time = new Date();
                     }, 1000);
                 },
                 beforeUnmount() {
-                    // Clear the interval when the component is unmounted
                     clearInterval(this.timer);
                 },
             });
