@@ -25,30 +25,30 @@
         <div id="app" class="container">
             <h2 class="text-center mb-4">Login</h2>
     
-            <form @submit.prevent="submitForm">
-                <!-- Username Field -->
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" v-model="username" class="form-control"
-                        :class="{'is-invalid': errors.username}">
-                    <div v-if="errors.username" class="error">{{ errors.username }}</div>
+            <div class="card">
+                <div class="card-body">
+                    <form @submit.prevent="submitForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" v-model="username" class="form-control"
+                                :class="{'is-invalid': errors.username}">
+                            <div v-if="errors.username" class="error">{{ errors.username }}</div>
+                        </div>
+            
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" v-model="password" class="form-control"
+                                :class="{'is-invalid': errors.password}">
+                            <div v-if="errors.password" class="error">{{ errors.password }}</div>
+                        </div>
+            
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+            
+                    <div v-if="successMessage" class="alert alert-success mt-3" role="alert">
+                        {{ successMessage }}
+                    </div>
                 </div>
-    
-                <!-- Password Field -->
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" v-model="password" class="form-control"
-                        :class="{'is-invalid': errors.password}">
-                    <div v-if="errors.password" class="error">{{ errors.password }}</div>
-                </div>
-    
-                <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </form>
-    
-            <!-- Success Message -->
-            <div v-if="successMessage" class="alert alert-success mt-3" role="alert">
-                {{ successMessage }}
             </div>
         </div>
     
@@ -79,10 +79,9 @@
                     submitForm() {
                         if (this.validateForm()) {
                             this.successMessage = 'Login successful!';
-                            this.errors = {}; // Clear any previous errors
-                            // Here you could also handle form submission (e.g., via an API request)
+                            this.errors = {};
                         } else {
-                            this.successMessage = ''; // Clear success message
+                            this.successMessage = '';
                         }
                     }
                 }
