@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learning Vue JS</title>
+        <link rel="stylesheet" href="css/bootstrap-v5.min.css">
+        <script src="js/vue.global.js"></script>
+
+        <style>
+            .container {
+                max-width: 400px;
+                margin-top: 50px;
+            }
+
+            .error {
+                color: red;
+                font-size: 0.9em;
+            }
+        </style>
+    </head>
+
+    <body class="bg-light">
+        <div id="app" class="container">
+            <h2>Vue.js Firebase Push Notification</h2>
+            <p>Click the button to request permission for notifications.</p>
+            <button class="btn" @click="requestNotificationPermission">Enable Notifications</button>
+            <div v-if="message" class="alert alert-info mt-3">
+                {{ message }}
+            </div>
+        </div>
+
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyD2ZQkb4iTHH3Li45lbFPafAygfC8dAY1Q",
+                authDomain: "vue-js-push-notification-5dab3.firebaseapp.com",
+                projectId: "vue-js-push-notification-5dab3",
+                storageBucket: "vue-js-push-notification-5dab3.firebasestorage.app",
+                messagingSenderId: "756665423562",
+                appId: "1:756665423562:web:85bc2273ca98b50a7d8633",
+                measurementId: "G-ZB5HM9V7FL"
+            };
+
+            const notificationApp = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(notificationApp);
+        </script>
+        <script>
+            const app = Vue.createApp({
+                data() {
+                    return {
+                        messaging: null,
+                        message: null
+                    };
+                },
+                methods: {
+                    async requestNotificationPermission() {
+                        try {
+                            const permission = await Notification.requestPermission();
+                            if (permission === 'granted') {
+                                this.message = 'Notifications enabled!';
+                                this.setupFirebaseMessaging();
+                            } else {
+                                this.message = 'Permission denied. Notifications not enabled.';
+                            }
+                        } catch (error) {
+                            this.message = 'Error requesting notification permission.';
+                        }
+                    },
+
+                    setupFirebaseMessaging() {
+                        const firebaseApp = firebase.initializeApp(firebaseConfig);
+                        this.messaging = firebase.messaging();
+
+                        this.messaging.getToken({ vapidKey: "YOUR_VAPID_KEY" }).then((currentToken) => {
+                            if (currentToken) {
+                                console.log("FCM Token:", currentToken);
+                                // Here you can send the token to your server for further use
+                            } else {
+                                console.log('No Instance ID token available. Request permission to generate one.');
+                            }
+                        }).catch((err) => {
+                            console.error('An error occurred while retrieving token. ', err);
+                        });
+
+                        // Handle incoming messages when the app is in the foreground
+                        this.messaging.onMessage((payload) => {
+                            console.log('Message received. ', payload);
+                            this.message = payload.notification.body;
+                            alert('Notification received: ' + this.message);
+                        });
+                    }
+                },
+                mounted() {
+                    if ('Notification' in window && navigator.serviceWorker) {
+                        this.requestNotificationPermission();
+                    }
+                }
+            });
+
+            app.mount('#app');
+        </script>
+    </body>
+
+</html>
