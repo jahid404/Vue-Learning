@@ -13,7 +13,8 @@
             <h3>Count: {{ count }}</h3>
 
             <button @click="increment" type="button" style="margin-right: 8px;">Increment +</button>
-            <button v-on:click="decrement" type="button">Decrement -</button>
+            <button v-on:click="decrement" type="button" style="margin-right: 8px;">Decrement -</button>
+            <button v-on:click="reset" type="button">Reset</button>
         </div>
 
         <script src="js/vue.global.js"></script>
@@ -34,6 +35,10 @@
                         if (this.count > 0) {
                             this.count--;
                         }
+                    },
+
+                    reset() {
+                        this.count = 0;
                     }
                 },
             });
