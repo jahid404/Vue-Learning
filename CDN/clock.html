@@ -10,18 +10,17 @@
 
         <style>
             .clock {
-                width: 200px;
-                height: 200px;
-                border: 5px solid #333;
+                width: 250px;
+                height: 250px;
+                border: 6px solid #cecece;
                 border-radius: 50%;
                 position: relative;
                 margin: 20px auto;
+                background: radial-gradient(circle, #383838 95%, #e9ecef 100%);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             }
-
+        
             .clock .hand {
-                width: 50%;
-                height: 2px;
-                background-color: #333;
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -29,15 +28,30 @@
                 transform: translate(-50%, -50%);
                 transition: transform 0.1s linear;
             }
-
+        
+            .clock .hour-hand {
+                width: 30%;
+                height: 4px;
+                background-color: #333;
+                border-radius: 2px;
+            }
+        
+            .clock .minute-hand {
+                width: 40%;
+                height: 3px;
+                background-color: #555;
+                border-radius: 2px;
+            }
+        
             .clock .second-hand {
-                height: 1px;
+                width: 45%;
+                height: 2px;
                 background-color: red;
             }
-
+        
             .clock .center {
-                width: 10px;
-                height: 10px;
+                width: 12px;
+                height: 12px;
                 background-color: #333;
                 border-radius: 50%;
                 position: absolute;
@@ -45,10 +59,25 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
+        
+            .clock .ticks {
+                position: absolute;
+                width: 4px;
+                height: 12px;
+                background-color: #333;
+                left: 50%;
+                top: 0;
+                transform-origin: center 120px;
+            }
+        
+            .clock .ticks:nth-child(odd) {
+                height: 8px;
+                background-color: #777;
+            }
         </style>
     </head>
 
-    <body>
+    <body class="bg-dark">
         <div id="app" class="container py-5 text-center">
             <h1 class="mb-4">Analog Clock</h1>
             <div class="clock">
