@@ -5,27 +5,50 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Learning Vue JS</title>
-
+        <link rel="stylesheet" href="css/bootstrap-v5.min.css">
     </head>
 
     <body>
-        <div id="app">
-            <h3>Time: {{ getCurrentTime() }}</h3>
+        <div id="app" class="container py-5">
+            <h3 class="text-center mb-4">Current Time in Various Formats</h3>
+            <div class="card mx-auto" style="max-width: 600px;">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Locale Time:</strong> {{ getCurrentTime().toLocaleTimeString() }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Locale Date:</strong> {{ getCurrentTime().toLocaleDateString() }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Locale String:</strong> {{ getCurrentTime().toLocaleString() }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>ISO String:</strong> {{ getCurrentTime().toISOString() }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>UTC String:</strong> {{ getCurrentTime().toUTCString() }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Time in Milliseconds (Epoch):</strong> {{ getCurrentTime().getTime() }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Hours:Minutes:Seconds:</strong>
+                            {{ getCurrentTime().getHours() }}:{{ getCurrentTime().getMinutes() }}:{{
+                            getCurrentTime().getSeconds() }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <script src="js/vue.global.js"></script>
 
         <script>
             const app = Vue.createApp({
-                data() {
-                    return {
-
-                    };
-                },
                 methods: {
                     getCurrentTime() {
-                        let ct = new Date();
-                        return ct;
+                        return new Date();
                     }
                 },
             });
