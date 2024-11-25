@@ -71,14 +71,28 @@
                         }
                     },
 
+                    // Initialize Firebase Messaging and get the token
                     setupFirebaseMessaging() {
+                        // Firebase initialization
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyD2ZQkb4iTHH3Li45lbFPafAygfC8dAY1Q",
+                            authDomain: "vue-js-push-notification-5dab3.firebaseapp.com",
+                            projectId: "vue-js-push-notification-5dab3",
+                            storageBucket: "vue-js-push-notification-5dab3.firebasestorage.app",
+                            messagingSenderId: "756665423562",
+                            appId: "1:756665423562:web:85bc2273ca98b50a7d8633",
+                            measurementId: "G-ZB5HM9V7FL"
+                        };
+
+                        // Initialize Firebase app and messaging
                         const firebaseApp = firebase.initializeApp(firebaseConfig);
                         this.messaging = firebase.messaging();
 
+                        // Get Firebase Cloud Messaging Token
                         this.messaging.getToken({ vapidKey: "YOUR_VAPID_KEY" }).then((currentToken) => {
                             if (currentToken) {
                                 console.log("FCM Token:", currentToken);
-                                // Here you can send the token to your server for further use
+                                // Send this token to your server for notification management
                             } else {
                                 console.log('No Instance ID token available. Request permission to generate one.');
                             }
@@ -95,6 +109,7 @@
                     }
                 },
                 mounted() {
+                    // Check for notification and service worker support
                     if ('Notification' in window && navigator.serviceWorker) {
                         this.requestNotificationPermission();
                     }
@@ -103,6 +118,7 @@
 
             app.mount('#app');
         </script>
+
     </body>
 
 </html>
