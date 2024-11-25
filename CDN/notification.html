@@ -25,6 +25,23 @@
         <div id="app" class="container">
             <h2>Vue.js Firebase Push Notification</h2>
             <p>Click the button to send a demo notification.</p>
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Notification Title</label>
+                <input type="text" id="title" v-model="title" class="form-control"
+                    placeholder="Enter notification title">
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Notification Message</label>
+                <input type="text" id="message" v-model="messageContent" class="form-control"
+                    placeholder="Enter notification message">
+            </div>
+            <div class="mb-3">
+                <label for="icon" class="form-label">Notification Icon URL</label>
+                <input type="text" id="icon" v-model="icon" class="form-control"
+                    placeholder="Enter notification icon URL">
+            </div>
+
             <button class="btn btn-primary" @click="sendNotification">Send Demo Notification</button>
             <div v-if="message" class="alert alert-info mt-3">
                 {{ message }}
@@ -53,7 +70,10 @@
             const app = Vue.createApp({
                 data() {
                     return {
-                        message: null
+                        title: '',
+                        messageContent: '',
+                        icon: '',
+                        statusMessage: ''
                     };
                 },
                 methods: {
@@ -78,9 +98,13 @@
 
                     sendDemoNotification() {
                         if ('Notification' in window) {
-                            new Notification('Demo Notification', {
-                                body: 'This is a demo push notification sent via Firebase!',
-                                icon: 'https://via.placeholder.com/128'
+                            const notificationTitle = this.title || 'Default Title';
+                            const notificationMessage = this.messageContent || 'This is a default notification message.';
+                            const notificationIcon = this.icon || 'https://via.placeholder.com/128';
+
+                            new Notification(notificationTitle, {
+                                body: notificationMessage,
+                                icon: notificationIcon
                             });
                         }
                     },
