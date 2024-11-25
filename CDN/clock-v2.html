@@ -90,6 +90,26 @@
                 font-weight: bold;
                 transform: translate(-50%, -50%);
             }
+
+            .minute-tick {
+                position: absolute;
+                width: 2px;
+                height: 4px;
+                background-color: #888;
+                top: 10px;
+                left: 50%;
+                transform-origin: center center;
+            }
+
+            .minute-tick:nth-child(odd) {
+                height: 8px;
+                background-color: #666;
+            }
+
+            .minute-tick:nth-child(even) {
+                height: 6px;
+                background-color: #555;
+            }
         </style>
     </head>
 
@@ -102,7 +122,6 @@
                 <div class="hand second-hand" :style="{ transform: `rotate(${secondDegrees}deg)` }"></div>
                 <div class="center"></div>
 
-                <!-- Hour Labels (12, 3, 6, 9) -->
                 <div class="hour-labels">
                     <div class="label" style="top: 5%; left: 50%;">12</div>
                     <div class="label" style="top: 50%; left: 95%;">3</div>
@@ -110,8 +129,7 @@
                     <div class="label" style="top: 50%; left: 5%;">9</div>
                 </div>
 
-                <!-- Minute Ticks (5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55) -->
-                <div class="ticks" v-for="tick in 60" :style="{ transform: `rotate(${tick * 6}deg)` }"></div>
+                <div class="minute-tick" v-for="tick in 60" :style="{ transform: `rotate(${tick * 6}deg)` }"></div>
             </div>
         </div>
 
