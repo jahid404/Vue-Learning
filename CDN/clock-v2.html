@@ -37,14 +37,14 @@
             }
 
             .clock .minute-hand {
-                width: 40%;
+                width: 35%;
                 height: 3px;
                 background-color: #777777;
                 border-radius: 2px;
             }
 
             .clock .second-hand {
-                width: 45%;
+                width: 40%;
                 height: 2px;
                 background-color: red;
             }
@@ -104,10 +104,10 @@
                 <div class="center"></div>
 
                 <div class="hour-labels">
-                    <div class="label" style="top: 5%; left: 50%;">12</div>
-                    <div class="label" style="top: 50%; left: 95%;">3</div>
-                    <div class="label" style="top: 95%; left: 50%;">6</div>
-                    <div class="label" style="top: 50%; left: 5%;">9</div>
+                    <div class="label" style="top: 10%; left: 50%;">12</div>
+                    <div class="label" style="top: 50%; left: 90%;">3</div>
+                    <div class="label" style="top: 90%; left: 50%;">6</div>
+                    <div class="label" style="top: 50%; left: 10%;">9</div>
                 </div>
 
                 <div class="ticks" v-for="tick in 60" :style="{ transform: `rotate(${tick * 6}deg)` }"></div>
