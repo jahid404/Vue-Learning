@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learning Vue JS</title>
+        <link rel="stylesheet" href="css/bootstrap-v5.min.css">
+    </head>
+
+    <body class="bg-light">
+        <div id="app" class="container py-5">
+            <div class="card mx-auto" style="max-width: 400px;">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Vue Calculator</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <input type="text" class="form-control text-end fs-4" v-model="display" readonly />
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-3" v-for="button in buttons" :key="button.label">
+                            <button class="btn btn-secondary w-100 fs-4" :class="button.class"
+                                @click="handleClick(button.label)">
+                                {{ button.label }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const { createApp } = Vue;
+
+            createApp({
+                data() {
+                    return {
+                        display: '',
+                        buttons: [
+                            { label: '7' }, { label: '8' }, { label: '9' }, { label: '/' },
+                            { label: '4' }, { label: '5' }, { label: '6' }, { label: '*' },
+                            { label: '1' }, { label: '2' }, { label: '3' }, { label: '-' },
+                            { label: 'C', class: 'btn-danger' },
+                            { label: '0' }, { label: '=', class: 'btn-success' }, { label: '+' },
+                        ],
+                    };
+                },
+                methods: {
+                    handleClick(label) {
+                        if (label === 'C') {
+                            this.display = '';
+                        } else if (label === '=') {
+                            try {
+                                // Evaluate the expression safely
+                                this.display = eval(this.display);
+                            } catch (error) {
+                                this.display = 'Error';
+                            }
+                        } else {
+                            this.display += label;
+                        }
+                    },
+                },
+            }).mount('#app');
+        </script>
+    </body>
+
+</html>
