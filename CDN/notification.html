@@ -37,9 +37,8 @@
                     placeholder="Enter notification message">
             </div>
             <div class="mb-3">
-                <label for="icon" class="form-label">Notification Icon URL</label>
-                <input type="text" id="icon" v-model="icon" class="form-control"
-                    placeholder="Enter notification icon URL">
+                <label for="icon" class="form-label">Notification Icon (Upload an image)</label>
+                <input type="file" id="icon" @change="handleFileUpload" class="form-control">
             </div>
 
             <button class="btn btn-primary" @click="sendNotification">Send Demo Notification</button>
@@ -52,6 +51,7 @@
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
             import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-messaging.js";
+            import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-storage.js";
 
             const firebaseConfig = {
                 apiKey: "AIzaSyD2ZQkb4iTHH3Li45lbFPafAygfC8dAY1Q",
@@ -66,13 +66,15 @@
             const notificationApp = initializeApp(firebaseConfig);
             const analytics = getAnalytics(notificationApp);
             const messaging = getMessaging(notificationApp);
+            const storage = getStorage(notificationApp);
 
             const app = Vue.createApp({
                 data() {
                     return {
                         title: '',
                         messageContent: '',
-                        icon: '',
+                        iconFile: null,
+                        iconURL: '',
                         statusMessage: ''
                     };
                 },
@@ -96,11 +98,25 @@
                         }
                     },
 
+                    handleFileUpload(event) {
+                        const file = event.target.files[0];
+                        if (file) {
+                            const storageRef = ref(storage, 'icons/' + file.name);
+                            uploadBytes(storageRef, file).then((snapshot) => {
+                                console.log('Uploaded a file!');
+                                getDownloadURL(snapshot.ref).then((url) => {
+                                    this.iconURL = url;
+                                    console.log('File available at', url);
+                                });
+                            });
+                        }
+                    },
+
                     sendDemoNotification() {
                         if ('Notification' in window) {
                             const notificationTitle = this.title || 'Default Title';
                             const notificationMessage = this.messageContent || 'This is a default notification message.';
-                            const notificationIcon = this.icon || 'https://via.placeholder.com/128';
+                            const notificationIcon = this.iconURL || 'https://via.placeholder.com/128';
 
                             new Notification(notificationTitle, {
                                 body: notificationMessage,
