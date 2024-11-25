@@ -51,6 +51,14 @@
                         return new Date();
                     }
                 },
+                 mounted() {
+                    this.timer = setInterval(() => {
+                        this.currentTime = new Date();
+                    }, 1000);
+                },
+                beforeUnmount() {
+                    clearInterval(this.timer);
+                }
             });
 
             app.mount('#app');
