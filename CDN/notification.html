@@ -49,7 +49,6 @@
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
             import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-messaging.js";
 
-            // Firebase configuration object (replace with your own credentials)
             const firebaseConfig = {
                 apiKey: "AIzaSyD2ZQkb4iTHH3Li45lbFPafAygfC8dAY1Q",
                 authDomain: "vue-js-push-notification-5dab3.firebaseapp.com",
@@ -60,12 +59,10 @@
                 measurementId: "G-ZB5HM9V7FL"
             };
 
-            // Initialize Firebase
             const notificationApp = initializeApp(firebaseConfig);
             const analytics = getAnalytics(notificationApp);
             const messaging = getMessaging(notificationApp);
 
-            // Service Worker registration (required for push notifications)
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/firebase-messaging-sw.js')
                     .then(function (registration) {
@@ -109,7 +106,7 @@
                         if ('Notification' in window) {
                             const notificationTitle = this.title || 'Default Title';
                             const notificationMessage = this.messageContent || 'No message provided';
-                            const notificationIcon = 'https://via.placeholder.com/128';  // Placeholder for icon
+                            const notificationIcon = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_WtXkLnA3EK1XGF0QCh3k-PBDybu1gwa4dHI453TfyJ5cXmnjNfAeT0hLFFBac7AqTeziqTv4dQXqMzRZGQH4LBbgUVL80_GagAbz4mZi1_w5-MOUaMtoyzLQPRT_k2Mcz4SCZ1h2oRnzHBZBf83wbYtS3BE4bTIA1sNtEPmd9kxssJlNACV9ejqCXbA';
 
                             new Notification(notificationTitle, {
                                 body: notificationMessage,
