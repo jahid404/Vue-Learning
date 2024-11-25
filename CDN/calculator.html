@@ -51,7 +51,6 @@
                             this.display = '';
                         } else if (label === '=') {
                             try {
-                                // Evaluate the expression safely
                                 this.display = eval(this.display);
                             } catch (error) {
                                 this.display = 'Error';
