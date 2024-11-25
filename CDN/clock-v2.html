@@ -62,17 +62,18 @@
 
             .clock .ticks {
                 position: absolute;
-                width: 4px;
-                height: 12px;
-                background-color: #333;
+                width: 2px;
+                height: 8px;
+                background-color: #646464;
                 left: 50%;
                 top: 0;
-                transform-origin: center 120px;
+                transform-origin: center 120.5px;
             }
 
             .clock .ticks:nth-child(odd) {
-                height: 8px;
-                background-color: #777;
+                width: 2px;
+                height: 5px;
+                background-color: #d1d1d1;
             }
 
             .clock .hour-labels {
@@ -89,26 +90,6 @@
                 font-size: 18px;
                 font-weight: bold;
                 transform: translate(-50%, -50%);
-            }
-
-            .minute-tick {
-                position: absolute;
-                width: 2px;
-                height: 4px;
-                background-color: #888;
-                top: 10px;
-                left: 50%;
-                transform-origin: center center;
-            }
-
-            .minute-tick:nth-child(odd) {
-                height: 8px;
-                background-color: #666;
-            }
-
-            .minute-tick:nth-child(even) {
-                height: 6px;
-                background-color: #555;
             }
         </style>
     </head>
