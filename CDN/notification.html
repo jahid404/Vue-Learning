@@ -8,10 +8,6 @@
         <link rel="stylesheet" href="css/bootstrap-v5.min.css">
         <script src="js/vue.global.js"></script>
 
-        <!-- Firebase SDKs -->
-        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
-
         <style>
             .container {
                 max-width: 400px;
@@ -35,8 +31,10 @@
             </div>
         </div>
 
-        <script>
-            // Firebase configuration
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+
             const firebaseConfig = {
                 apiKey: "AIzaSyD2ZQkb4iTHH3Li45lbFPafAygfC8dAY1Q",
                 authDomain: "vue-js-push-notification-5dab3.firebaseapp.com",
@@ -47,18 +45,18 @@
                 measurementId: "G-ZB5HM9V7FL"
             };
 
-            // Initialize Firebase
-            const app = firebase.initializeApp(firebaseConfig);
-            const messaging = firebase.messaging();
-
-            const vueApp = Vue.createApp({
+            const notificationApp = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(notificationApp);
+        </script>
+        <script>
+            const app = Vue.createApp({
                 data() {
                     return {
+                        messaging: null,
                         message: null
                     };
                 },
                 methods: {
-                    // Request Notification permission from user
                     async requestNotificationPermission() {
                         try {
                             const permission = await Notification.requestPermission();
@@ -73,24 +71,23 @@
                         }
                     },
 
-                    // Initialize Firebase Messaging and get the token
                     setupFirebaseMessaging() {
-                        // Get the FCM token
-                        messaging.getToken({ vapidKey: "YOUR_VAPID_KEY" })
-                            .then((currentToken) => {
-                                if (currentToken) {
-                                    console.log("FCM Token:", currentToken);
-                                    // Send this token to your server for notification management
-                                } else {
-                                    console.log('No Instance ID token available. Request permission to generate one.');
-                                }
-                            })
-                            .catch((err) => {
-                                console.error('An error occurred while retrieving token. ', err);
-                            });
+                        const firebaseApp = firebase.initializeApp(firebaseConfig);
+                        this.messaging = firebase.messaging();
+
+                        this.messaging.getToken({ vapidKey: "YOUR_VAPID_KEY" }).then((currentToken) => {
+                            if (currentToken) {
+                                console.log("FCM Token:", currentToken);
+                                // Here you can send the token to your server for further use
+                            } else {
+                                console.log('No Instance ID token available. Request permission to generate one.');
+                            }
+                        }).catch((err) => {
+                            console.error('An error occurred while retrieving token. ', err);
+                        });
 
                         // Handle incoming messages when the app is in the foreground
-                        messaging.onMessage((payload) => {
+                        this.messaging.onMessage((payload) => {
                             console.log('Message received. ', payload);
                             this.message = payload.notification.body;
                             alert('Notification received: ' + this.message);
@@ -98,14 +95,13 @@
                     }
                 },
                 mounted() {
-                    // Check for notification and service worker support
                     if ('Notification' in window && navigator.serviceWorker) {
                         this.requestNotificationPermission();
                     }
                 }
             });
 
-            vueApp.mount('#app');
+            app.mount('#app');
         </script>
     </body>
 
