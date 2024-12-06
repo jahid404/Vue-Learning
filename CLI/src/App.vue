@@ -1,10 +1,14 @@
-<template></template>
+<template>
+	<h2 v-if="num === 0">Zero</h2>
+</template>
 
 <script>
 	export default {
 		name: 'App',
 		data() {
-			return {};
+			return {
+				num: 0
+			};
 		},
 	};
 </script>
