@@ -1,5 +1,5 @@
 <template>
-	
+	<h2 v-for="(name, index) in names" :key="index">{{ name }}</h2>
 </template>
 
 
@@ -8,7 +8,7 @@
 		name: 'App',
 		data() {
 			return {
-				
+				names: ['john', 'doe', 'michel']
 			};
 		},
 	};
