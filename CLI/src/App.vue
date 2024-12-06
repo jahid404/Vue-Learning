@@ -4,12 +4,13 @@
 	<h2 v-else-if="num < 0">Negative</h2>
 	<h2 v-else>NaN</h2>
 
-	<div v-if="display">
+	<template v-if="display">
 		<h2>Jahid</h2>
 		<h2>Umama</h2>
 		<h2>Shuvra</h2>
-	</div>
+	</template>
 </template>
+
 
 <script>
 	export default {
