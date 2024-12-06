@@ -1,5 +1,6 @@
 <template>
 	<h2 v-if="num === 0">Zero</h2>
+	<h2 v-else>Non Zero</h2>
 </template>
 
 <script>
@@ -7,7 +8,7 @@
 		name: 'App',
 		data() {
 			return {
-				num: 0
+				num: 1
 			};
 		},
 	};
