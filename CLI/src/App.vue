@@ -9,10 +9,6 @@
     </li>
   </ul>
 
-  <template v-for="(name, index) in fullNames" :key="index">
-    {{ name.first + ' ' + name.last + ' ' + name.nickname }}
-  </template>
-
   <!-- array of array -->
   <ul>
     <li v-for="(name, index) in bioData" :key="index">
