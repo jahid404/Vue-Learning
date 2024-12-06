@@ -1,6 +1,7 @@
 <template>
-	<h2 v-if="num === 0">Zero</h2>
-	<h2 v-else>Non Zero</h2>
+	<h2 v-if="num > 0">Positive</h2>
+	<h2 v-else-if="num < 0">Negative</h2>
+	<h2 v-else>Zero</h2>
 </template>
 
 <script>
