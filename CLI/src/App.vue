@@ -1,7 +1,8 @@
 <template>
-	<h2 v-if="num > 0">Positive</h2>
+	<h2 v-if="num === 0">Zero</h2>
+	<h2 v-else-if="num > 0">Positive</h2>
 	<h2 v-else-if="num < 0">Negative</h2>
-	<h2 v-else>Zero</h2>
+	<h2 v-else>NaN</h2>
 </template>
 
 <script>
@@ -9,7 +10,7 @@
 		name: 'App',
 		data() {
 			return {
-				num: 5
+				num: 8
 			};
 		},
 	};
