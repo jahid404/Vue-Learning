@@ -9,7 +9,7 @@
 		name: 'App',
 		data() {
 			return {
-				num: 1
+				num: 5
 			};
 		},
 	};
