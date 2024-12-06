@@ -14,7 +14,9 @@
     <li v-for="(name, index) in bioData" :key="index">
       {{ name.first + ' ' + name.last + ' ' + name.nickname }}
       <ol>
-        <li v-for="(color, index) in name.favColor" :key="index">Fav: {{ color }}</li>
+        <li v-for="(color, index) in name.favColor" :key="index">
+          Fav: {{ color }}
+        </li>
       </ol>
     </li>
   </ul>
@@ -35,17 +37,17 @@
           {
             first: 'Jahidul',
             last: 'Islam',
-            favColor: ['white', 'black']
+            favColor: ['white', 'black'],
           },
           {
             first: 'Lutfun',
             last: 'Naher',
-            favColor: ['blue', 'black']
+            favColor: ['blue', 'black'],
           },
           {
             first: 'Jaowata',
             last: 'Afnan',
-            favColor: ['blue', 'white']
+            favColor: ['blue', 'white'],
           },
         ],
       };
