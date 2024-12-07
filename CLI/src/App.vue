@@ -7,6 +7,7 @@
     name: 'App',
     data() {
       return {
+        baseMultiplier: 3.1416
       }
     },
     methods: {
