@@ -2,6 +2,10 @@
   <!-- array of string -->
   <h2 v-for="(name, index) in names" :key="index">{{ name }}</h2>
 
+  <template v-for="(name, index) in names" :key="index">
+    <h2 v-if="name === 'john'">{{ name }}</h2>
+  </template>
+
   <!-- array of object -->
   <ul>
     <li v-for="(name, index) in fullNames" :key="index">
