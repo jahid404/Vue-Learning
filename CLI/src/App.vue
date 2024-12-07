@@ -1,5 +1,6 @@
 <template>
   <h2>{{ add() }}</h2>
+  <h2>{{ multiply(4369851) }}</h2>
 </template>
 
 <script>
@@ -7,12 +8,15 @@
     name: 'App',
     data() {
       return {
-        baseMultiplier: 3.1416
-      }
+        baseMultiplier: 3.1416,
+      };
     },
     methods: {
       add() {
         return 2 + 3 + 5;
+      },
+      multiply(num){
+        return num * this.baseMultiplier;
       }
     },
   };
