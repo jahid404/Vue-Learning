@@ -1,6 +1,6 @@
 <template>
   <!-- array of string -->
-  <h2 v-for="(name, index) in names" :key="index">{{ name + ' ' + index }}</h2>
+  <h2 v-for="(name, index) in names" :key="index">{{ name }}</h2>
 
   <!-- array of object -->
   <ul>
