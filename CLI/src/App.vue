@@ -1,6 +1,8 @@
 <template>
-  <h2>{{ add() }}</h2>
-  <h2>{{ multiply(4369851) }}</h2>
+  <h2>{{ counter }}</h2>
+
+  <button @click="increment">+</button>
+  <button @click="decrement">-</button>
 </template>
 
 <script>
@@ -8,16 +10,18 @@
     name: 'App',
     data() {
       return {
-        baseMultiplier: 3.1416,
+        counter: 0
       };
     },
     methods: {
-      add() {
-        return 2 + 3 + 5;
+      increment() {
+        this.counter++;
       },
-      multiply(num){
-        return num * this.baseMultiplier;
-      }
+      decrement() {
+        if (this.counter > 0) {
+          this.counter--;
+        }
+      },
     },
   };
 </script>
