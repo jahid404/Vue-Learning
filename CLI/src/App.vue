@@ -27,9 +27,7 @@
           this.counter--;
         }
       },
-      changeName(e) {
-        console.log(e);
-        
+      changeName() {
         this.name = 'Umu Pakhi';
       }
     },
