@@ -28,9 +28,7 @@
         }
       },
       changeName() {
-        if (this.name != this.name) {
-          this.name = 'Umu Pakhi';
-        }
+        this.name = 'Umu Pakhi';
       }
     },
   };
