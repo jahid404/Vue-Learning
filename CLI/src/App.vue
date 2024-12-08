@@ -3,6 +3,10 @@
 
   <button @click="increment">+</button>
   <button @click="decrement">-</button>
+  <hr>
+
+  <h1>{{ name }}</h1>
+  <button @click="changeName">Change</button>
 </template>
 
 <script>
@@ -10,7 +14,8 @@
     name: 'App',
     data() {
       return {
-        counter: 0
+        counter: 0,
+        name: 'Jahid'
       };
     },
     methods: {
@@ -22,6 +27,11 @@
           this.counter--;
         }
       },
+      changeName() {
+        if (this.name != this.name) {
+          this.name = 'Umu Pakhi';
+        }
+      }
     },
   };
 </script>
