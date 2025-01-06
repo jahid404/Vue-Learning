@@ -5,24 +5,54 @@
         </header>
 
         <main>
-            <div class="row">
-                <div class="col-md-4">
-                    <input
-                        type="text"
-                        name="name"
-                        class="form-control form-control-lg"
-                        placeholder="Enter your name"
-                    />
+            <form action="#" method="post">
+                <div class="row">
+                    <div class="col-md-4 my-1">
+                        <input
+                            type="text"
+                            name="first_name"
+                            class="form-control form-control-lg"
+                            placeholder="Enter your name"
+                        />
+                    </div>
+                    <div class="col-md-4 my-1">
+                        <input
+                            type="text"
+                            name="last_name"
+                            class="form-control form-control-lg"
+                            placeholder="Enter your name"
+                        />
+                    </div>
+                    <div class="col-md-4 my-1">
+                        <input
+                            type="date"
+                            name="dob"
+                            class="form-control form-control-lg"
+                            placeholder="Enter DOB"
+                        />
+                    </div>
+                    <div class="col-md-4 my-1">
+                        <input
+                            type="number"
+                            name="phone"
+                            class="form-control form-control-lg"
+                            placeholder="Enter Phone"
+                        />
+                    </div>
+                    <div class="col-md-4 my-1">
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control form-control-lg"
+                            placeholder="Enter Email"
+                        />
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <input
-                        type="text"
-                        name="name"
-                        class="form-control form-control-lg"
-                        placeholder="Enter your name"
-                    />
+
+                <div class="text-center">
+                    <button type="button" class="btn btn-success mt-4">Submit</button>
                 </div>
-            </div>
+            </form>
         </main>
     </div>
 </template>
