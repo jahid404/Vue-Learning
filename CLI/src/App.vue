@@ -1,8 +1,8 @@
-<template>
+/* <template>
     <h2>{{ counter }}</h2>
     <button @click="counter++" class="btn btn-primary mx-1">Increment</button>
     <button @click="decrement" class="btn btn-danger mx-1">Decrement</button>
-</template>
+</template> */
 
 <script>
     export default {
