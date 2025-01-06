@@ -6,17 +6,20 @@
 
         <main>
             <GreetComponent />
+            <CounterComponent />
         </main>
     </div>
 </template>
 
 <script>
+    import CounterComponent from './components/CounterComponent.vue';
     import GreetComponent from './components/GreetComponent.vue';
 
     export default {
         name: 'App',
         components: {
             GreetComponent,
+            CounterComponent,
         },
     };
 </script>
