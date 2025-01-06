@@ -6,7 +6,7 @@
 
         <main>
             <GreetComponent />
-            <CounterComponent initialValue="0"/>  
+            <CounterComponent />
         </main>
     </div>
 </template>
