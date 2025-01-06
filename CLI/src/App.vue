@@ -62,7 +62,7 @@
         name: 'App',
         data() {
             return {
-                counter: 0,
+                
             };
         },
     };
