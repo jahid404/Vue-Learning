@@ -45,7 +45,7 @@
                             name="phone"
                             class="form-control form-control-lg"
                             placeholder="Enter Phone"
-                            v-model="formValues.phone"
+                            v-model.number="formValues.phone"
                         />
                     </div>
                     <div class="col-md-4 my-1">
