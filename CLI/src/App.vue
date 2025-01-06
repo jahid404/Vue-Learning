@@ -6,7 +6,9 @@
 
         <main>
             <div class="mb-5">
-                <pre></pre>
+                <pre>
+                {{ JSON.stringify(formValues, null, 4) }}
+                </pre>
             </div>
             <form action="#" method="post">
                 <div class="row">
@@ -16,6 +18,7 @@
                             name="first_name"
                             class="form-control form-control-lg"
                             placeholder="Enter your name"
+                            v-model="formValues.name"
                         />
                     </div>
                     <div class="col-md-4 my-1">
@@ -64,7 +67,11 @@
     export default {
         name: 'App',
         data() {
-            return {};
+            return {
+                formValues: {
+                    first_name: '',
+                },
+            };
         },
     };
 </script>
