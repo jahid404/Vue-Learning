@@ -10,7 +10,7 @@
                 {{ JSON.stringify(formValues, null, 4) }}
                 </pre>
             </div>
-            <form action="#" method="post" @submit="submitForm">
+            <form action="#" method="post" @submit.prevent="submitForm">
                 <div class="row">
                     <div class="col-md-4 my-1">
                         <input
@@ -142,8 +142,8 @@
             };
         },
         methods: {
-            submitForm(event) {
-                event.preventDefault();
+            submitForm(/* event */) {
+                // event.preventDefault();
                 console.log(this.formValues);
             },
         },
