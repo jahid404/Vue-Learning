@@ -94,13 +94,13 @@
                     </div>
 
                     <div class="col-md-4 my-1">
-                    <label for="">Is Remote?</label>
+                        <label for="is_remote">Is Remote?</label>
                         <input
                             type="checkbox"
                             name="is_remote"
+                            id="is_remote"
                             class="form-control form-control-lg"
-                            value="false"
-                            v-model="formValues.email"
+                            v-model="formValues.is_remote"
                         />
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                     profile: '',
                     country: '',
                     location: [],
-                    is_remote: false
+                    is_remote: false,
                 },
             };
         },
