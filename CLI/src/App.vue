@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="button" class="btn btn-success mt-4">Submit</button>
+                    <button type="submit" class="btn btn-success mt-4">Submit</button>
                 </div>
             </form>
         </main>
