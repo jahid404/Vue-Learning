@@ -6,7 +6,7 @@
 
         <main>
             <div class="mb-5">
-                <pre class="">
+                <pre class="bg-light rounded-4 p-4">
                 {{ JSON.stringify(formValues, null, 4) }}
                 </pre>
             </div>
