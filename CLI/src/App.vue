@@ -5,6 +5,9 @@
         </header>
 
         <main>
+            <div class="mb-5">
+                <pre></pre>
+            </div>
             <form action="#" method="post">
                 <div class="row">
                     <div class="col-md-4 my-1">
@@ -61,9 +64,7 @@
     export default {
         name: 'App',
         data() {
-            return {
-                
-            };
+            return {};
         },
     };
 </script>
