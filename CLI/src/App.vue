@@ -104,20 +104,11 @@
                         />
                         <label for="is_remote">Is Remote?</label>
                     </div>
-                    <div class="col-md-4 my-1">
-                        <input
-                            type="radio"
-                            name="is_remote"
-                            id="is_remote"
-                            v-model="formValues.is_remote"
-                        />
-                        <label for="is_remote">Is Remote?</label>
-                    </div>
                 </div>
 
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <button type="submit" class="btn btn-success mt-4">Submit</button>
-                </div>
+                </div> -->
             </form>
         </main>
     </div>
@@ -142,8 +133,7 @@
             };
         },
         methods: {
-            submitForm(/* event */) {
-                // event.preventDefault();
+            submitForm() {
                 console.log(this.formValues);
             },
         },
