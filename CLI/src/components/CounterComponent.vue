@@ -10,6 +10,7 @@
 
 <script>
     export default {
+        name: 'CounterComponent',
         data() {
             return {
                 currentValue: 0,
