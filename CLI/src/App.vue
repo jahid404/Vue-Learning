@@ -78,7 +78,6 @@
                             v-model="formValues.location"
                             multiple
                         >
-                            <option value="">Select Location</option>
                             <option value="Dhaka">Dhaka</option>
                             <option value="Chattagram">Chattagram</option>
                             <option value="Noakhali">Noakhali</option>
