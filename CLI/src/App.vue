@@ -27,7 +27,7 @@
                             name="last_name"
                             class="form-control form-control-lg"
                             placeholder="Enter your name"
-                            v-model="formValues.last_name"
+                            v-model.lazy="formValues.last_name"
                         />
                     </div>
                     <div class="col-md-4 my-1">
