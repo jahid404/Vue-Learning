@@ -6,7 +6,7 @@
 
         <main>
             <div class="mb-5">
-                <pre>
+                <pre class="">
                 {{ JSON.stringify(formValues, null, 4) }}
                 </pre>
             </div>
@@ -18,7 +18,7 @@
                             name="first_name"
                             class="form-control form-control-lg"
                             placeholder="Enter your name"
-                            v-model="formValues.name"
+                            v-model="formValues.first_name"
                         />
                     </div>
                     <div class="col-md-4 my-1">
@@ -27,6 +27,7 @@
                             name="last_name"
                             class="form-control form-control-lg"
                             placeholder="Enter your name"
+                            v-model="formValues.last_name"
                         />
                     </div>
                     <div class="col-md-4 my-1">
@@ -35,6 +36,7 @@
                             name="dob"
                             class="form-control form-control-lg"
                             placeholder="Enter DOB"
+                            v-model="formValues.dob"
                         />
                     </div>
                     <div class="col-md-4 my-1">
@@ -43,6 +45,7 @@
                             name="phone"
                             class="form-control form-control-lg"
                             placeholder="Enter Phone"
+                            v-model="formValues.phone"
                         />
                     </div>
                     <div class="col-md-4 my-1">
@@ -51,6 +54,7 @@
                             name="email"
                             class="form-control form-control-lg"
                             placeholder="Enter Email"
+                            v-model="formValues.email"
                         />
                     </div>
                 </div>
@@ -70,6 +74,10 @@
             return {
                 formValues: {
                     first_name: '',
+                    last_name: '',
+                    dob: '',
+                    phone: '',
+                    email: '',
                 },
             };
         },
