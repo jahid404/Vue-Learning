@@ -92,6 +92,17 @@
                             v-model="formValues.profile"
                         ></textarea>
                     </div>
+
+                    <div class="col-md-4 my-1">
+                    <label for="">Is Remote?</label>
+                        <input
+                            type="checkbox"
+                            name="is_remote"
+                            class="form-control form-control-lg"
+                            value="false"
+                            v-model="formValues.email"
+                        />
+                    </div>
                 </div>
 
                 <div class="text-center">
@@ -116,6 +127,7 @@
                     profile: '',
                     country: '',
                     location: [],
+                    is_remote: false
                 },
             };
         },
