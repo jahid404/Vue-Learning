@@ -57,6 +57,33 @@
                             v-model="formValues.email"
                         />
                     </div>
+                    <div class="col-md-4 my-1">
+                        <select
+                            name="country"
+                            id=""
+                            class="form-control form-control-lg"
+                            v-model="formValues.country"
+                        >
+                            <option value="">Select Country</option>
+                            <option value="bangladesh">Bangladesh</option>
+                            <option value="china">China</option>
+                            <option value="pakistan">Pakistan</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 my-1">
+                        <select
+                            name="location"
+                            id=""
+                            class="form-control form-control-lg"
+                            v-model="formValues.location"
+                            multiple
+                        >
+                            <option value="">Select Location</option>
+                            <option value="Dhaka">Dhaka</option>
+                            <option value="Chattagram">Chattagram</option>
+                            <option value="Noakhali">Noakhali</option>
+                        </select>
+                    </div>
 
                     <div class="col-12 my-1">
                         <textarea
@@ -87,7 +114,9 @@
                     dob: '',
                     phone: '',
                     email: '',
-                    profile: ''
+                    profile: '',
+                    country: '',
+                    location: [],
                 },
             };
         },
