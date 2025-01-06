@@ -46,6 +46,7 @@
                             class="form-control form-control-lg"
                             placeholder="Enter Phone"
                             v-model.number="formValues.phone"
+                            @keyup.enter="submitForm"
                         />
                     </div>
                     <div class="col-md-4 my-1">
@@ -106,9 +107,9 @@
                     </div>
                 </div>
 
-                <!-- <div class="text-center">
+                <div class="text-center">
                     <button type="submit" class="btn btn-success mt-4">Submit</button>
-                </div> -->
+                </div>
             </form>
         </main>
     </div>
