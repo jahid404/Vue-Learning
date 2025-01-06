@@ -23,5 +23,6 @@
                 }
             },
         },
+        props: ['initialValue']
     };
 </script>
