@@ -57,6 +57,15 @@
                             v-model="formValues.email"
                         />
                     </div>
+
+                    <div class="col-12 my-1">
+                        <textarea
+                            name="profile"
+                            class="form-control form-control-lg"
+                            placeholder="Write profile summary"
+                            v-model="formValues.profile"
+                        ></textarea>
+                    </div>
                 </div>
 
                 <div class="text-center">
@@ -78,6 +87,7 @@
                     dob: '',
                     phone: '',
                     email: '',
+                    profile: ''
                 },
             };
         },
