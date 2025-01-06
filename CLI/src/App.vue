@@ -10,7 +10,7 @@
                 {{ JSON.stringify(formValues, null, 4) }}
                 </pre>
             </div>
-            <form action="#" method="post">
+            <form action="#" method="post" @submit="submitForm">
                 <div class="row">
                     <div class="col-md-4 my-1">
                         <input
@@ -98,7 +98,8 @@
                             type="checkbox"
                             name="is_remote"
                             id="is_remote"
-                            true-value="yes" false-value="no"
+                            true-value="yes"
+                            false-value="no"
                             v-model="formValues.is_remote"
                         />
                         <label for="is_remote">Is Remote?</label>
@@ -139,6 +140,12 @@
                     is_remote: 'no',
                 },
             };
+        },
+        methods: {
+            submitForm(event) {
+                event.preventDefault();
+                console.log(this.formValues);
+            },
         },
     };
 </script>
