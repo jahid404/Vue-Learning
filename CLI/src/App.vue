@@ -5,7 +5,7 @@
         </header>
 
         <main>
-            <GreetComponent></GreetComponent>
+            <GreetComponent />
         </main>
     </div>
 </template>
@@ -17,9 +17,6 @@
         name: 'App',
         components: {
             GreetComponent,
-        },
-        data() {
-            return {};
         },
     };
 </script>
