@@ -94,14 +94,23 @@
                     </div>
 
                     <div class="col-md-4 my-1">
-                        <label for="is_remote">Is Remote?</label>
                         <input
                             type="checkbox"
                             name="is_remote"
                             id="is_remote"
-                            class="form-control form-control-lg"
+                            true-value="yes" false-value="no"
                             v-model="formValues.is_remote"
                         />
+                        <label for="is_remote">Is Remote?</label>
+                    </div>
+                    <div class="col-md-4 my-1">
+                        <input
+                            type="radio"
+                            name="is_remote"
+                            id="is_remote"
+                            v-model="formValues.is_remote"
+                        />
+                        <label for="is_remote">Is Remote?</label>
                     </div>
                 </div>
 
@@ -127,7 +136,7 @@
                     profile: '',
                     country: '',
                     location: [],
-                    is_remote: false,
+                    is_remote: 'no',
                 },
             };
         },
