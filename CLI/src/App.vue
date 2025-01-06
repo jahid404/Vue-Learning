@@ -18,7 +18,7 @@
                             name="first_name"
                             class="form-control form-control-lg"
                             placeholder="Enter your name"
-                            v-model="formValues.first_name"
+                            v-model.trim="formValues.first_name"
                         />
                     </div>
                     <div class="col-md-4 my-1">
