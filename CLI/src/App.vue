@@ -6,10 +6,22 @@
 
         <main>
             <div class="row">
-                <div class="col-6">
-                    <input type="text" name="name" class="form-control form-control-lg" placeholder="" />
+                <div class="col-md-4">
+                    <input
+                        type="text"
+                        name="name"
+                        class="form-control form-control-lg"
+                        placeholder="Enter your name"
+                    />
                 </div>
-                <div class="col-6"></div>
+                <div class="col-md-4">
+                    <input
+                        type="text"
+                        name="name"
+                        class="form-control form-control-lg"
+                        placeholder="Enter your name"
+                    />
+                </div>
             </div>
         </main>
     </div>
