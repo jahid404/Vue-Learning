@@ -9,6 +9,6 @@
             return {
                 app_name: 'Vue World!'
             }
-        },
+        }, 
     };
 </script>
