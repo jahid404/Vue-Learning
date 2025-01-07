@@ -6,7 +6,7 @@
 
         <main>
             <GreetComponent appName="Vue World"/>
-            <CounterComponent />
+            <CounterComponent :initialValue="initialValue"/>
         </main>
     </div>
 </template>
@@ -20,6 +20,11 @@
         components: {
             GreetComponent,
             CounterComponent,
+        },
+        data() {
+            return {
+                initialValue : 10
+            }
         },
     };
 </script>
