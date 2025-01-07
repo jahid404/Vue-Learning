@@ -5,7 +5,7 @@
         </header>
 
         <main>
-            <GreetComponent />
+            <GreetComponent appName="Vue World"/>
             <CounterComponent />
         </main>
     </div>

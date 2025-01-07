@@ -1,5 +1,5 @@
 <template>
-    <h2>Hello {{ app_name }}</h2>
+    <h2>Hello {{ appName }}</h2>
 </template>
 
 <script>
@@ -10,5 +10,6 @@
                 app_name: 'Vue World!'
             }
         }, 
+        props: ['appName']
     };
 </script>
